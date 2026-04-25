@@ -1,0 +1,8 @@
+{
+  "name": "openpave-wiki",
+  "version": "0.1.0",
+  "description": "LLM-maintained personal wiki over PAVE session history",
+  "main": "index.js",
+  "license": "MIT",
+  "bin": { "wiki": "./index.js" }
+}

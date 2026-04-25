@@ -1,0 +1,111 @@
+# OpenPAVE Wiki Skill
+# LLM-maintained personal knowledge base over PAVE session history.
+# Pattern from: https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f
+
+name: wiki
+version: 0.1.4
+description: Read PAVE session history and read/write a markdown wiki at ~/.pave/wiki/
+
+author:
+  name: cnrai
+  url: https://github.com/cnrai
+
+license: MIT
+homepage: https://github.com/cnrai/openpave-wiki
+repository: cnrai/openpave-wiki
+
+pattern: sandbox
+entrypoint: index.js
+
+permissions:
+  fs.read:
+    - ~/.pave/state/**
+    - ~/.pave/wiki/**
+  fs.write:
+    - ~/.pave/wiki/**
+  network: []
+  modules: []
+  system: []
+
+global_options:
+  - --json
+  - --help
+
+commands:
+  - name: list-sessions
+    description: List sessions from ~/.pave/state/session/, newest first
+    options:
+      - --limit <n>
+      - --unprocessed
+      - --since <iso-date>
+      - --dir <path>
+
+  - name: read-session
+    description: Dump a session's metadata + ordered messages + parts as markdown for LLM ingestion
+    args:
+      - <sessionId>
+    options:
+      - --max-chars <n>
+      - --skip-tools
+
+  - name: list-pages
+    description: List wiki pages
+    options:
+      - --category <name>
+
+  - name: read-page
+    description: Read a wiki page
+    args:
+      - <path>
+
+  - name: write-page
+    description: Create or overwrite a wiki page
+    args:
+      - <path>
+    options:
+      - --content <text>
+      - --content-file <path>
+      - --append
+
+  - name: append-log
+    description: Append a dated entry to wiki/log.md (format "## [YYYY-MM-DD] kind | summary")
+    options:
+      - --kind <ingest|query|lint|note>
+      - --summary <text>
+      - --session <id>
+
+  - name: processed
+    description: Check whether a session id has been ingested (exits 0 if yes)
+    args:
+      - <sessionId>
+
+  - name: search
+    description: Plain grep over wiki/ markdown
+    args:
+      - <pattern>
+    options:
+      - --category <name>
+
+  - name: stats
+    description: Counts of sessions, messages, parts, wiki pages
+
+# Platform compatibility
+platforms:
+  - darwin
+  - linux
+  - win32
+
+engines:
+  node: ">=16.0.0"
+
+# Metadata
+keywords:
+  - wiki
+  - knowledge
+  - memory
+  - notes
+  - sessions
+  - karpathy
+
+category: productivity
+icon: "📚"
