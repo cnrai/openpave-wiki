@@ -3,7 +3,7 @@
 # Pattern from: https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f
 
 name: wiki
-version: 0.1.4
+version: 0.1.5
 description: Read PAVE session history and read/write a markdown wiki at ~/.pave/wiki/
 
 author:
@@ -11,8 +11,6 @@ author:
   url: https://github.com/cnrai
 
 license: MIT
-homepage: https://github.com/cnrai/openpave-wiki
-repository: cnrai/openpave-wiki
 
 pattern: sandbox
 entrypoint: index.js
@@ -28,7 +26,7 @@ permissions:
   system: []
 
 global_options:
-  - --json
+  - --summary
   - --help
 
 commands:
@@ -89,23 +87,5 @@ commands:
   - name: stats
     description: Counts of sessions, messages, parts, wiki pages
 
-# Platform compatibility
-platforms:
-  - darwin
-  - linux
-  - win32
-
-engines:
-  node: ">=16.0.0"
-
-# Metadata
-keywords:
-  - wiki
-  - knowledge
-  - memory
-  - notes
-  - sessions
-  - karpathy
-
-category: productivity
-icon: "📚"
+category: knowledge
+icon: "\U0001F4D6"

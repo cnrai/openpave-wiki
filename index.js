@@ -62,7 +62,7 @@ function emit(s) { console.log(s); }
 function err(s) { (console.error || console.log)(s); }
 
 function output(args, data, fallbackText) {
-  if (args.options.json) emit(JSON.stringify(data, null, 2));
+  if (!args.options.summary) emit(JSON.stringify(data));
   else emit(fallbackText);
 }
 
@@ -176,7 +176,7 @@ function cmdReadSession(args) {
   const data = loadSessionData(sid);
   if (!data) fail(`session not found: ${sid}`);
 
-  if (args.options.json) { emit(JSON.stringify(data, null, 2)); return; }
+  if (!args.options.summary) { emit(JSON.stringify(data)); return; }
 
   const { session, messages } = data;
   const lines = [];
