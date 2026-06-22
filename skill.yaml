@@ -11,6 +11,8 @@ author:
   url: https://github.com/cnrai
 
 license: MIT
+homepage: https://github.com/cnrai/openpave-wiki
+repository: cnrai/openpave-wiki
 
 pattern: sandbox
 entrypoint: index.js
