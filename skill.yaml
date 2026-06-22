@@ -89,5 +89,5 @@ commands:
   - name: stats
     description: Counts of sessions, messages, parts, wiki pages
 
-category: knowledge
+category: productivity
 icon: "\U0001F4D6"
